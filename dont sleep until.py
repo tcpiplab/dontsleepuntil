@@ -50,8 +50,9 @@ def sleep_now():
     system('pmset displaysleepnow')
 
 def interpret(command_list):
-    
-    if command_list[0] == '-t' and command_list[1] == '-s':
+    if len(command_list) == 0:
+	print('Invalid arguments. Please use -t, -b,-c , -n, or -h.')
+    elif command_list[0] == '-t' and command_list[1] == '-s':
         dont_sleep_for_x_time('-s', int(command_list[2]))
     elif command_list[0] == '-t' and command_list[1] == '-m':
         dont_sleep_for_x_time('-m', command_list[2])
@@ -68,6 +69,6 @@ def interpret(command_list):
     elif command_list[0] == '-h' or command_list[0] == '--help':
 	    print('\nhelp page\n\n-t = set timer to sleep in a certain amount of time (-s = seconds, -m = minutes, -h = hours, -d = days).\n-b = sleep when system approaches battery percentage\n-c = sleep after another command finishes executing\n-n = sleep now\n') 
     else:
-        print('Invalid command. Please use -t, -b,-c , -n, or -h.')
+        print('Invalid arguments. Please use -t, -b,-c , -n, or -h.')
         
 interpret(get_command())
