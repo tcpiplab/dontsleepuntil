@@ -8,6 +8,8 @@ Features:
   ⦿ prevent sleeping until proceding command has finished running
   ⦿ sleep when command is run
 
-this is intended to be run in a terminal 
-
-it is recomended this is script is given an alias in your terminals config. file
+Recomendations:
+  
+  ⦿ this script should be run on a unix-based system (best with laptops)
+  ⦿ intended to be run in a terminal 
+  ⦿ this is script is given an alias in your terminals config. file 
