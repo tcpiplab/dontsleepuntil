@@ -9,7 +9,7 @@ Features:
   
     ⦿ prevent sleeping until proceding command has finished running
   
-    ⦿ sleep imedietly
+    ⦿ sleep immediately
     
     ⦿ never sleep
    
