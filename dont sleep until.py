@@ -47,6 +47,12 @@ def dont_sleep_until_command_finishes(command):
 def sleep_now():
     from os import system
     system('pmset displaysleepnow')
+    
+def never_sleep(voided=True):
+    from os import system
+    system('caffeinate -i')
+    if not voided:
+        system('pmset displaysleepnow')
 
 def interpret(command_list):
     try:
@@ -66,11 +72,34 @@ def interpret(command_list):
         elif command_list[0] == '-c':
             dont_sleep_until_command_finishes(command_list[1])
         elif command_list[0] == '-n':
+            try:
+                if command_list[1] == '-v':
+                    never_sleep()
+            except IndexError:
+                never_sleep(False)
+        elif command_list[0] == '-i':
             sleep_now()
         elif command_list[0] in ['-h', '--help']:
-            print('\nhelp page\n\n-t = set timer to sleep in a certain amount of time (-s = seconds, -m = minutes, -h = hours, -d = days): usage - dontsleepuntil -t -m 50 (<-- sleeps after 50 mins)\n-b = sleep when system approaches battery percentage: usage - dontsleepuntil -b 20 (<-- sleeps when system reaches 20 percent battery)\n-c = sleep after another command finishes executing: usage - dontsleepuntil -c grep example (<-- sleeps after grep finshes executing)\n-n = sleep now\n-h = help page (this page)\n\n')
+            print("""
+help page
+
+-t = set timer to sleep in a certain amount of time (-s = seconds, -m = minutes, -h = hours, -d = days): usage - dontsleepuntil -t -m 50 (<-- sleeps after 50 mins)
+
+-b = sleep when system approaches battery percentage: usage - dontsleepuntil -b 20 (<-- sleeps when system reaches 20 percent battery)
+
+-c = sleep after another command finishes executing: usage - dontsleepuntil -c grep example (<-- sleeps after grep finshes executing)
+
+-i = sleep immediately
+
+-n = dont sleep until script is cancelled (sleep can be voided by -n -v)
+
+-h = help page (this page)
+
+                  """)
         else:
-            print('Invalid arguments. Please use -t, -b,-c , -n, or -h for help.')
+            print('Invalid arguments. Please use -t, -b, -c, -i, -n, or -h for further help.')
     except IndexError:
-        print('missing parameter(s)')
+        print('missing or invalid arguments.(Index error detected)')
+
+
 interpret(get_command())
