@@ -21,7 +21,7 @@ Recomendations:
   
     ⦿ intended to be run in a terminal 
   
-    ⦿ this is script is given an alias in your terminals config. file 
+    ⦿ this is script is given an alias in your terminals config. file (there is a seperate straighfoward script to do this if you do not know how to) 
 
 
 Usage:
