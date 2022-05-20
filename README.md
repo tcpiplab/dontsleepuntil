@@ -16,7 +16,9 @@ Features:
     
 
 Recomendations:
-  
+    
+    ⦿ python3 and bash must be installed
+    
     ⦿ this script should be run on a unix/bsd-based system (best with laptops)
   
     ⦿ intended to be run in a terminal 
