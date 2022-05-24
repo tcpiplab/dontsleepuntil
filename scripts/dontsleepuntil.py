@@ -56,6 +56,23 @@ def never_sleep(voided=True):
     if not voided:
         system('pmset displaysleepnow')
 
+def help_page():
+    from time import sleep
+    print("\n\nhelp page")
+    sleep(.05)
+    print('\n-t = set timer to sleep in a certain amount of time (-s = seconds, -m = minutes, -h = hours, -d = days): usage - dontsleepuntil -t -m 50 (<-- sleeps after 50 mins)')
+    sleep(.05)
+    print("\n-b = sleep when system approaches battery percentage: usage - dontsleepuntil -b 20 (<-- sleeps when system reaches 20 percent battery)")
+    sleep(.05)
+    print("\n-c = sleep when command finishes: usage - dontsleepuntil -c 'ls -l' (<-- sleeps when ls -l finishes)")
+    sleep(.05)
+    print("\n-n = never sleep: usage - dontsleepuntil -n (<-- never sleeps)")
+    sleep(.05)
+    print("\n-i = sleep now: usage - dontsleepuntil -i (<-- sleeps now)")
+    sleep(.05)
+    print("\n-h = help page: usage - dontsleepuntil -h (<-- prints this page)")
+    print('\n')
+
 def interpret(command_list):
     try:
         if len(command_list) == 0:
@@ -82,22 +99,7 @@ def interpret(command_list):
         elif command_list[0] == '-i':
             sleep_now()
         elif command_list[0] in ['-h', '--help']:
-            print("""
-help page
-
--t = set timer to sleep in a certain amount of time (-s = seconds, -m = minutes, -h = hours, -d = days): usage - dontsleepuntil -t -m 50 (<-- sleeps after 50 mins)
-
--b = sleep when system approaches battery percentage: usage - dontsleepuntil -b 20 (<-- sleeps when system reaches 20 percent battery)
-
--c = sleep after another command finishes executing: usage - dontsleepuntil -c grep example (<-- sleeps after grep finshes executing)
-
--i = sleep immediately
-
--n = dont sleep until script is cancelled (sleep can be voided by -n -v)
-
--h = help page (this page)
-
-                  """)
+            help_page()
         else:
             print('Invalid arguments. Please use -t, -b, -c, -i, -n, or -h for further help.')
     except IndexError:
@@ -105,3 +107,4 @@ help page
 
 
 interpret(get_command())
+
