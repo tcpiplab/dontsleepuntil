@@ -1,6 +1,17 @@
 # dontsleepuntil
 python(3) script/command line tool that does not let the system sleep until some specfic conditions are met
 
+Inastallation:
+    
+    ⦿ run this in your terminal to install the script and create an alias in the zshrc
+    
+        git clone 'https://github.com/username-not-available-is-not-available/dontsleepuntil'
+        echo 'alias dontsleepuntil="python3 dontsleepuntil/scripts/dontsleepuntil.py"' >> ~/.zshrc
+    
+    ⦿ there is also a seperate user friendly script to create an alias (link below)
+        
+        https://github.com/username-not-available-is-not-available/dontsleepuntil/blob/main/scripts/create%20alias
+
 Features:
 
     ⦿ prevent sleeping until battery percentage is met
@@ -13,7 +24,6 @@ Features:
     
     ⦿ never sleep
    
-    
 
 Recomendations:
     
