@@ -8,7 +8,7 @@ def dont_sleep_for_x_time(unit, time):
     from os import system
     # multiplies the input based in the selected unit of time
     # caffeintaes system for that amount of time in seconds
-    # sleeps after caffeinate finishes 
+    # sleeps after caffeinate finishes
 
     if unit == '-s':
         system(f'caffeinate -d -t {str(time)}') # no change
@@ -21,14 +21,14 @@ def dont_sleep_for_x_time(unit, time):
     elif unit == '-h':
         system(f'caffeinate -d -t {str(int(time) * 3600)}') # 3600 seconds in a day
         system('pmset displaysleepnow')
-    
+
     elif unit == '-d':
         system(f'caffeinate -d -t {str(int(time) * 86400)}') # 86400 seconds in a day
         system('pmset displaysleepnow')
 
     else:
         print('Invalid unit. Please use -s, -m,-d, or -h.')
-        
+
 def dont_sleep_for_x_batt(percent): # waits until battery reaches a percent to sleep
     import subprocess
     from os import system
@@ -42,20 +42,20 @@ def dont_sleep_for_x_batt(percent): # waits until battery reaches a percent to s
         sleep(1)
 
     system('pmset displaysleepnow')
-    
-    
+
+
 def dont_sleep_until_command_finishes(command):
     from os import system
-    system(f'caffeinate -s {command}') # formats command into caffeinate command
+    system(f'caffeinate -d -s {command}') # formats command into caffeinate command
     system('pmset displaysleepnow')
-    
-def sleep_now(): # sleeps immediately  
+
+def sleep_now(): # sleeps immediately
     from os import system
     system('pmset displaysleepnow')
-    
+
 def never_sleep(voided=True):
     from os import system
-    system('caffeinate -i') # never sleeps
+    system('caffeinate -d -i') # never sleeps
     if not voided:
         system('pmset displaysleepnow') # when the user exits with ctrl c, the computer wont sleep if its voided with -v
 
@@ -105,8 +105,8 @@ def interpret(command_list): #interprets the arguments in the comamnd line
             help_page()
         else:
             print('Invalid arguments. Please use -t, -b, -c, -i, -n, or -h for further help.')
-    except IndexError: # if there is a wrong number of arguments passed 
+    except IndexError: # if there is a wrong number of arguments passed
         print('missing or invalid arguments.(Index error detected)')
 
 if __name__ == "__main__":
-    interpret(get_command()) # main 
+    interpret(get_command()) # main
