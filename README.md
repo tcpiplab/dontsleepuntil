@@ -1,7 +1,7 @@
 # dontsleepuntil
-python(3) script/command line tool that does not let the system sleep until some specfic conditions are met
+python(3) script/command line tool that does not let the system sleep until some specific conditions are met
 
-Inastallation:
+Installation:
     
     ⦿ run this in your terminal to install the script and create an alias in the zshrc
     

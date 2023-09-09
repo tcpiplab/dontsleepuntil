@@ -2,15 +2,13 @@
 
 import sys
 import re
+from subprocess import check_output
+from time import sleep
 
 
 def get_command():  # gets the command to pass the arguments to the rest of the script
 
     return sys.argv[1:]
-
-
-from subprocess import check_output
-from time import sleep
 
 
 def dont_sleep_until_hhmm(time_hhmm):
@@ -135,7 +133,7 @@ def never_sleep(voided=True):
     system('caffeinate -d -i')  # never sleeps
     if not voided:
         system(
-            'pmset displaysleepnow')  # when the user exits with ctrl c, the computer wont sleep if its voided with -v
+            'pmset displaysleepnow')  # when the user exits with ctrl c, the computer won't sleep if it's voided with -v
 
 
 def help_page():  # help page that waits .05 seconds between each output so there is a rolling effect
@@ -146,10 +144,12 @@ def help_page():  # help page that waits .05 seconds between each output so ther
         '\n-u  = set time to wake up: usage - dontsleepuntil -u 5pm (<-- sleeps at 5:00pm)')
     sleep(.05)
     print(
-        '\n-t = set timer to sleep in a certain amount of time (-s = seconds, -m = minutes, -h = hours, -d = days): usage - dontsleepuntil -t -m 50 (<-- sleeps after 50 mins)')
+        '\n-t = set timer to sleep in a certain amount of time (-s = seconds, -m = minutes, -h = hours, -d = days): '
+        'usage - dontsleepuntil -t -m 50 (<-- sleeps after 50 minutes)')
     sleep(.05)
     print(
-        "\n-b = sleep when system approaches battery percentage: usage - dontsleepuntil -b 20 (<-- sleeps when system reaches 20 percent battery)")
+        "\n-b = sleep when system approaches battery percentage: usage - dontsleepuntil -b 20 (<-- sleeps when system "
+        "reaches 20 percent battery)")
     sleep(.05)
     print("\n-c = sleep when command finishes: usage - dontsleepuntil -c 'ls -l' (<-- sleeps when ls -l finishes)")
     sleep(.05)
@@ -161,11 +161,12 @@ def help_page():  # help page that waits .05 seconds between each output so ther
     print('\n')
 
 
-def interpret(command_list):  # interprets the arguments in the comamnd line
+def interpret(command_list):  # interprets the arguments in the command line
     try:
         if len(command_list) == 0:
             print(
-                'Invalid arguments. Please use -u, -t, -b, -c , -n, or -h for help.')  # if there are no arguments passed the program quits
+                'Invalid arguments. Please use -u, -t, -b, -c , -n, or -h for help.')  # if there are no arguments
+            # passed the program quits
             quit()
         elif command_list[0] == '-u':
             dont_sleep_until_hhmm(command_list[1])
