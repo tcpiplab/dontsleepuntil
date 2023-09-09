@@ -25,7 +25,7 @@ Features:
     ⦿ never sleep
    
 
-Recomendations:
+Recommendations:
     
     ⦿ python3 and bash must be installed
     
@@ -37,6 +37,8 @@ Recomendations:
 
 
 Usage:
+
+     ⦿ -u = set time to wake up: usage - dontsleepuntil -u 5pm (<-- sleeps at 5:00pm)
 
      ⦿ -t = set timer to sleep in a certain amount of time (-s = seconds, -m = minutes, -h = hours, -d = days): usage - dontsleepuntil -t -m 50 (<-- sleeps after 50 mins)
 
